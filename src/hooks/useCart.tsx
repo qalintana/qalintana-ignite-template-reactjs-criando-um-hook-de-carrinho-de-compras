@@ -86,6 +86,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     }
   };
 
+//
   const updateProductAmount = async ({
     productId,
     amount,
