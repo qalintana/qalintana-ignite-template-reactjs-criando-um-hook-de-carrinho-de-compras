@@ -30,6 +30,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     if (storagedCart) {
       return JSON.parse(storagedCart);
     }
+
     return [];
   });
 
@@ -76,6 +77,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       );
       if (productIndex >= 0) {
         updatedCart.splice(productIndex, 1);
+        
         setCart(updatedCart);
 
         localStorage.setItem('@RocketShoes:cart', JSON.stringify(updatedCart));
@@ -96,7 +98,8 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       if (amount <= 0) {
         return;
       }
-      const stock = await api.get(`/stock/${productId}`);
+
+      const stock = await api.get<Stock>(`/stock/${productId}`);
 
       const stockAmount = stock.data.amount;
 
