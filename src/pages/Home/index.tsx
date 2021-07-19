@@ -57,8 +57,8 @@ const Home = (): JSX.Element => {
       {products.map((product) => (
         <li key={product.id}>
           <img
-            src="https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg"
-            alt="Tênis de Caminhada Leve Confortável"
+            src={product.image}
+            alt={product.title}
           />
           <strong>{product.title}</strong>
           <span>{product.priceFormatted}</span>

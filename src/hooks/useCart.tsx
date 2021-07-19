@@ -1,5 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 import { toast } from 'react-toastify';
+
+
 import { api } from '../services/api';
 import { Product, Stock } from '../types';
 
@@ -39,7 +41,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         (product) => product.id === productId
       );
 
-      const estoque = await api.get(`/stock/${productId}`);
+      const estoque = await api.get<Stock>(`/stock/${productId}`);
 
       const quantidadeEstoque: number = estoque.data.amount;
 
